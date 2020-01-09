@@ -1,11 +1,11 @@
-# intercom
-Home Test Assessment
+# Intercom Home Test Assessment
 
-## Build Python Environment
+### Build Python Environment
     source ./build.sh
 
-## Run Main Invitation Script
+### Run Main Invitation Script
     python main.py
 
-## Run Tests
+### Run Tests
+100% code coverage
     ./test.sh
