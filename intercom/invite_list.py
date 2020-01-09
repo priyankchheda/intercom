@@ -22,5 +22,6 @@ def get_invite_list(filename):
         if customer.distance_from_office <= 100.00:
             invite_list.append(customer)
 
+    # sorting invite list according to used ID
     invite_list.sort(key=lambda x: x.user_id)
     return invite_list

@@ -22,7 +22,7 @@ class Customer:
         return f"{self.user_id} - {self.name}"
 
     def get_distance_from_office(self):
-        """ gets distance of customer from Dubline office.
+        """ gets distance of customer from Dublin office.
         Uses great circle distance formula to find the distance between
         two GPS coordinates.
         :returns: distance of customer from Dublin office in KM
