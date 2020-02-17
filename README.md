@@ -1,4 +1,4 @@
-# Intercom Home Test Assessment
+# Intercom
 
 ### Build Python Environment
     source ./build.sh
