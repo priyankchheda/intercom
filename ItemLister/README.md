@@ -8,4 +8,4 @@ Dead simple item lister which add, display, remove and search item from list.
 - Bootstrap
 
 ### Screenshot
-![Item Lister Screenshot](itemLister.png)
+<kbd><img src="itemLister.png" /></kbd>
