@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax - get POST data</title>
+</head>
+<body>
+  <button id='button'>get post data</button>
+  <br><br>
+  <div id="text"></div>
+
+  <script>
+    document.getElementById('button').addEventListener('click', function(e){
+      let xhr = new XMLHttpRequest();
+      let params = "name=priyank&age=27";
+      xhr.open('POST', 'https://httpbin.org/post', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onload = function() {
+        if (this.status == 200) {
+          let output = this.responseText;
+          console.log(output);
+          document.getElementById('text').innerHTML = output;
+        }
+      };
+      xhr.send(params);
+    });
+  </script>
+</body>
+</html>

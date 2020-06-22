@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX2 - Json (Github User API)</title>
+  <style>
+    .user {
+      display: flex;
+      background: #f4f4f4;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .user ul {
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="button">Load Github Users</button>
+  <br><br>
+  <h1>Github Users</h1>
+  <div id="users"></div>
+
+  <script>
+    document.getElementById('button').addEventListener('click', function(e) {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://api.github.com/users', true);
+      xhr.onload = function() {
+        if (this.status == 200) {
+          let users = JSON.parse(this.responseText);
+
+          let output = '';
+          users.forEach(user => {
+            output += '<div class="user">';
+            output += '<img src="' + user.avatar_url + '" width="70" height="70"/>';
+            output += '<ul>';
+            output += '<li>ID: ' + user.id + '</li>';
+            output += '<li>Login: ' + user.login + '</li>';
+            output += '</ul></div>'
+          });
+          document.getElementById('users').innerHTML = output;
+        }
+      };
+      xhr.send();
+    });
+  </script>
+</body>
+
+</html>
