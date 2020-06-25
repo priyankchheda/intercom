@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps</title>
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>My Google Map</h1>
+  <div id="map"></div>
+  <script>
+    function initMap() {
+      let pune = { lat: 18.5204, lng: 73.8567 };
+
+      // create map
+      let map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: pune
+      });
+
+      // listen for click event on map
+      google.maps.event.addListener(map, 'click', function (event) {
+        addMarker({ coords: event.latLng });
+      });
+
+      // add marker function
+      function addMarker(options) {
+        let marker = new google.maps.Marker({
+          position: options.coords,
+          map: map,
+        });
+
+        // check for custom icon
+        if (options.icon) {
+          marker.setIcon(options.icon);
+        }
+
+        // check content
+        if (options.content) {
+          let infoWindow = new google.maps.InfoWindow({
+            content: options.content
+          });
+          marker.addListener('click', function () {
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+
+      let markers = [
+        {
+          coords: pune,
+          icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content: '<h3>Pune, MH</h3>'
+        },
+        {
+          coords: { lat: 18.4097, lng: 73.5066 },
+          content: '<h3>Lavasa, MH</h3>'
+        },
+        {
+          coords: { lat: 19.0760, lng: 72.8777 }
+        }
+      ];
+
+      markers.forEach(marker => addMarker(marker));
+
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+</body>
+
+</html>
