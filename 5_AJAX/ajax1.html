@@ -15,7 +15,7 @@
       let xhr = new XMLHttpRequest();
       let url = "https://raw.githubusercontent.com/priyankchheda/javascript/master/README.md";
       console.log("before opening connection: readyState = ", xhr.readyState);
-      xhr.open('GET', url, true);
+      xhr.open('GET', url, true); // open(method_type, url_link, async_or_not)
       console.log("after opening connection: readyState = ", xhr.readyState);
 
       /* optional - used for loader */
@@ -25,7 +25,6 @@
       }
 
 
-      /* old way */
       /*
       readyState Values
       0: request not initialized
@@ -34,6 +33,8 @@
       3: processing request
       4: request finised and response is ready
       */
+
+      /* old way */
       xhr.onreadystatechange = function () {
         console.log("in onreadystatechange: readyState = ", xhr.readyState);
         if (this.readyState == 4 && this.status == 200) {
